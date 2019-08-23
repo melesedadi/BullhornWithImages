@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Messages Image</title>
+</head>
+<body>
+    <a href="/add"Add a message</a>
+<div th:each="message : ${messages}">
+    <div th:if="${message.image} != null">
+        <img src="${message.image}" />
+        <hr />
+    </div>
+    <h3 th:text="${message.MESSAGE}"><</h3>
+    <h4 th:text="${message.by}"><</h4>
+    <h4 th:text="${message.postdate}"><</h4>
+</div>
+</body>
+</html>
