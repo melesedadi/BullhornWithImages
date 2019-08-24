@@ -6,13 +6,31 @@
 </head>
 <body>
 <br /><br />
-<h1> Bullhorn with Cloudinary Images</h1>
+
+<h1>Add Message</h1>
+<form action="#" th:action="@{/process}" th:object="${message}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    Message :<input type="text" th:field="*{MESSAGE}" />
+    <span th:if="${#fields.hasErrors('MESSAGE')}"
+          th:errors="*{MESSAGE}"></span><br />
+    Post Date :<input type="text" th:field="*{postdate}" />
+    <span th:if="${#fields.hasErrors('postdate')}"
+          th:errors="*{postdate}"></span><br />
+    Content :<textarea rows="3" th:field="*{content}" />
+    <span th:if="${#fields.hasErrors('content')}"
+          th:errors="*{content}"></span><br />
+    Sent By :<input type="text" th:field="*{by}" />
+    <span th:if="${#fields.hasErrors('by')}"
+          th:errors="*{by}"></span><br /><br />
+    <input type="submit" value="submit" />
+</form>
+<h1> Add an Image with Cloudinary </h1>
 <form method="post" action="/add" th:object="${message}"
       enctype="multipart/form-data">
     Message: <input type="text" th:field="*{MESSAGE}" />
     Sent by: <input type="text" th:field="*{by}" />
     Post Date: <input type="text" th:field="*{postdate}" />
-    Message Image: <input type="text" th:field="*{image}" />
+    Message Image: <input type="text" th:field="*{content}" />
     <input type="file" name="file" /><br/><br/><input type="submit" value="Submit" />
 </form>
 </body>

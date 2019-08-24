@@ -2,18 +2,47 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Messages Image</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Bullhorn with Twitter Bootstrap Style</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <a href="/add"Add a message</a>
-<div th:each="message : ${messages}">
-    <div th:if="${message.image} != null">
-        <img src="${message.image}" />
-        <hr />
+<div class="container">
+    <div class="jumbotron">
+        <h1>Bullhorn with Twitter Bootstrap Style!</h1><p>...</p>
+        <p><a class="btn-primary btn-ing" heref="#" role="button">Learn more</a></p>
     </div>
-    <h3 th:text="${message.MESSAGE}"><</h3>
-    <h4 th:text="${message.by}"><</h4>
-    <h4 th:text="${message.postdate}"><</h4>
-</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <h2><a href="/add"> Add a Message </a><br /></h2>
+<table>
+    <tr>
+        <th>Message</th>
+        <th>Post Date</th>
+        <th>Sent By</th>
+        <td>Actions</td>
+    </tr>
+        <tr th:each="message : ${messages}">
+            <td th:text="${message.MESSAGE}"></td>
+            <td th:text="${message.postdate}"></td>
+            <td th:text="${message.by}"></td>
+            <td>
+                <a th:href="@{/update/{id}(id=${message.id})}">Update</a>
+                <a th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+            </td></tr>
+    </table>
+    <div th:each="message : ${messages}">
+        <div th:if="${message.content} != null">
+            <img src="${message.content}" />
+            <hr />
+        </div>
+        <h3 th:text="${message.MESSAGE}"><</h3>
+        <h4 th:text="${message.by}"><</h4>
+        <h4 th:text="${message.postdate}"><</h4>
+    </div>
+
+    <h2><a href="/add"> Upload an Image using Cloudinary</a><br /></h2>
 </body>
 </html>

@@ -3,17 +3,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String MESSAGE;
-    private String by;
-    private String postdate;
-    private String image;
+     private long id;
 
+    @NotNull
+    @Size(min = 4)
+    private  String MESSAGE;
+
+    @NotNull
+    @Size(min=3)
+    private String postdate;
+
+    @NotNull
+    @Size(min=10)
+    private String content;
+
+    @NotNull
+    @Size(min=3)
+    private String by;
 
     public long getId() {
         return id;
@@ -31,14 +44,6 @@ public class Message {
         this.MESSAGE = MESSAGE;
     }
 
-    public String getBy() {
-        return by;
-    }
-
-    public void setBy(String by) {
-        this.by = by;
-    }
-
     public String getPostdate() {
         return postdate;
     }
@@ -47,11 +52,19 @@ public class Message {
         this.postdate = postdate;
     }
 
-    public String getImage() {
-        return image;
+    public String getContent() {
+        return content;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getBy() {
+        return by;
+    }
+
+    public void setBy(String by) {
+        this.by = by;
     }
 }
